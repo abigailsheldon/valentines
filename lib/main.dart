@@ -21,14 +21,15 @@ class MyApp extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: image
+                image: AssetImage('/assets/images/image2.png'),
                 fit: BoxFit.cover,
                 ),
             ),
             ),
         ),
       ),
-    )
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -80,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), 
     );
   }
 }

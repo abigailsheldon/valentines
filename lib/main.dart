@@ -11,15 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Candelabra',
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Using Assets in Flutter'),
         ),
+        
         body: Center(
           child: Container(
+            
             width: 200,
             height: 200,
             decoration: BoxDecoration(
+              
               image: DecorationImage(
                 image: AssetImage('assets/images/image2.png'),
                 fit: BoxFit.cover,

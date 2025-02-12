@@ -16,24 +16,37 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Using Assets in Flutter'),
+          title: 
+          Text(
+            'Using Assets in Flutter',
+            style: TextStyle(fontSize: 24),
+            textAlign: TextAlign.center,
+            ),
+          centerTitle: true,
         ),
         
         body: Center(
-          child: Container(
-            
-            width: 200,
-            height: 200,
-            decoration: BoxDecoration(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               
-              image: DecorationImage(
-                image: AssetImage('assets/images/image2.png'),
-                fit: BoxFit.cover,
+              Text(
+                "Happy Valentine's Day!",
+                style: TextStyle(fontSize:30, fontFamily: 'Candelabra'),
+                textAlign: TextAlign.center,
+              ),
+              
+              SizedBox(height: 20),
+              Image.asset(
+                'assets/images/image2.png',
+                fit: BoxFit.contain,
+                width: double.infinity,
+                height: 300,
                 ),
+            ],
             ),
-            ),
+          ),
         ),
-      ),
     );
   }
 }

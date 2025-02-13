@@ -1,3 +1,8 @@
+// Abi Sheldon & Tiffani Singleton
+// Valentines day assignment
+// February 13 2025
+// You may need to "flutter clean" before "flutter run".
+
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'dart:async';
@@ -33,17 +38,26 @@ class _ConfettiScreenState extends State<ConfettiScreen>
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
   Timer? _timer;
-  int _timerSeconds = 10; // Countdown duration
+  int _timerSeconds = 10;
+  double _opacity = 1.0;
+  int _messageIndex = 0;
+
+  final List<String> messages = [
+    "Happy Valentine's Day! <3",
+    "You are the peanut butter to my jelly 🥜🍓",
+    "You are my sunshine on a rainy day ☀️",
+    "You make my heart skip a beat 💕",
+    "You mean the world to me",
+   
+  ];
 
   @override
   void initState() {
     super.initState();
 
-    // Initialize confetti controller
     _confettiController = ConfettiController(duration: const Duration(seconds: 10));
     _confettiController.play();
 
-    // Initialize animation
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
@@ -53,8 +67,8 @@ class _ConfettiScreenState extends State<ConfettiScreen>
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
 
-    // Start timer
     _startTimer();
+    _startTextAnimation();
   }
 
   void _startTimer() {
@@ -63,10 +77,26 @@ class _ConfettiScreenState extends State<ConfettiScreen>
         if (_timerSeconds == 0) {
           timer.cancel();
           _animationController.stop();
-          _confettiController.stop(); // Stop confetti when timer ends
+          _confettiController.stop();
         } else {
           _timerSeconds--;
         }
+      });
+    });
+  }
+
+  void _startTextAnimation() {
+    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+      if (!mounted) return;
+      setState(() {
+        _opacity = 0.0;
+      });
+      Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
+        setState(() {
+          _messageIndex = (_messageIndex + 1) % messages.length;
+          _opacity = 1.0;
+        });
       });
     });
   }
@@ -84,7 +114,7 @@ class _ConfettiScreenState extends State<ConfettiScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Using Assets in Flutter',
+          'Valentine’s Day Surprise',
           style: TextStyle(fontSize: 24),
           textAlign: TextAlign.center,
         ),
@@ -96,10 +126,18 @@ class _ConfettiScreenState extends State<ConfettiScreen>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "Happy Valentine's Day!",
-                  style: TextStyle(fontSize: 30, fontFamily: 'Candelabra'),
-                  textAlign: TextAlign.center,
+                AnimatedOpacity(
+                  opacity: _opacity,
+                  duration: const Duration(seconds: 1),
+                  child: Text(
+                    messages[_messageIndex],
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 ScaleTransition(
@@ -108,7 +146,7 @@ class _ConfettiScreenState extends State<ConfettiScreen>
                     width: 200,
                     height: 200,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                     // border: Border.all(color: Colors.black),
                     ),
                     child: Image.asset(
                       'assets/images/image2.png',
@@ -119,7 +157,11 @@ class _ConfettiScreenState extends State<ConfettiScreen>
                 const SizedBox(height: 20),
                 Text(
                   'Timer: $_timerSeconds s',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),

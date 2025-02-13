@@ -34,7 +34,7 @@ class _ConfettiScreenState extends State<ConfettiScreen> {
   @override
   void initState() {
     super.initState();
-    _confettiController = ConfettiController(duration: const Duration(seconds: 10));
+    _confettiController = ConfettiController(duration: const Duration(days:365));
     _confettiController.play();
   }
 
@@ -85,7 +85,7 @@ class _ConfettiScreenState extends State<ConfettiScreen> {
             child: ConfettiWidget(
               confettiController: _confettiController,
               blastDirection:  3.14 / 2,
-              emissionFrequency: 0.05,
+              emissionFrequency: 0.09,
               numberOfParticles: 10,
               gravity: 0.2,
               colors: [Colors.pinkAccent],

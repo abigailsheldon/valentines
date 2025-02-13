@@ -1,0 +1,2 @@
+/Users/pocketpuppy/Desktop/MAD/act05/act05/android/app/.cxx/RelWithDebInfo/v2h6p595/x86/CMakeFiles/edit_cache.dir
+/Users/pocketpuppy/Desktop/MAD/act05/act05/android/app/.cxx/RelWithDebInfo/v2h6p595/x86/CMakeFiles/rebuild_cache.dir

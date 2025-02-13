@@ -1,0 +1,2 @@
+/Users/tiffanisingleton/MAD/valentines/android/app/.cxx/Debug/1o62526u/x86/CMakeFiles/edit_cache.dir
+/Users/tiffanisingleton/MAD/valentines/android/app/.cxx/Debug/1o62526u/x86/CMakeFiles/rebuild_cache.dir
